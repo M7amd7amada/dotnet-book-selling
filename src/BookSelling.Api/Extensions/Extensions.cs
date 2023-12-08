@@ -1,3 +1,7 @@
+using BookSelling.DataAccess.Data;
+
+using Microsoft.EntityFrameworkCore;
+
 namespace BookSelling.Api.Extensions;
 
 public static class Extensions
@@ -8,5 +12,8 @@ public static class Extensions
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(connectionString));
     }
 }
